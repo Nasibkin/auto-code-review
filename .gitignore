@@ -8,9 +8,6 @@ __pycache__/
 # Environment files
 .env
 
-# Docker
-Dockerfile
-docker-compose.yml
 prereq.txt
 
 # Virtual environment
