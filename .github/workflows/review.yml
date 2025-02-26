@@ -22,5 +22,9 @@ jobs:
         run: docker build -t auto-code-review .
 
       - name: Run Docker container
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          REVIEW_PROMPT: ${{ secrets.REVIEW_PROMPT }}
+          LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
         run: |
-          docker run --env-file .env auto-code-review
+          docker run -e OPENAI_API_KEY -e REVIEW_PROMPT -e LOG_LEVEL auto-code-review
