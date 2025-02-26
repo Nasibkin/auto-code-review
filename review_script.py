@@ -1,19 +1,24 @@
 import os
-from openai import OpenAI
+import openai
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize the OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def review_code(code):
     """
     Sends code to ChatGPT for review and returns the feedback.
     """
     try:
-        response = client.chat.completions.create(
+        print("API Key:", os.getenv("OPENAI_API_KEY"))  # Debugging
+        response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # or "gpt-4"
             messages=[
                 {"role": "system", "content": "You are a helpful code reviewer."},
-                {"role": "user", "content": f"{os.getenv('REVIEW_PROMPT')}\n\n{code}"},
+                {"role": "user", "content": f"Review the following code and provide feedback:\n\n{code}"},
             ],
             max_tokens=500,
         )

@@ -21,6 +21,9 @@ jobs:
       - name: Build Docker image
         run: docker build -t auto-code-review .
 
+      - name: Test internet access
+        run: docker run --rm -it auto-code-review ping -c 4 google.com
+
       - name: Run Docker container
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
