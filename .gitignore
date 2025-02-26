@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Environment files
+.env
+
+# Docker
+Dockerfile
+docker-compose.yml
+prereq.txt
+
+# Virtual environment
+venv/
+.venv/
